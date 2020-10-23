@@ -105,9 +105,30 @@ function findHrs()
    done
 echo "Working Hours of the month is $totalWorkHrs"
 }
+
+function getWorkingHrs()
+{
+    while [[ $(($totalWorkHrs + $empHrs)) -lt 100 ]]
+do
+    local empHours
+        empHours=$((RANDOM%3))
+                case $empHours in
+                        1)
+                        empHrs=4;;
+                        2)
+                        empHrs=8;;
+                        *)
+                        empHrs=0;;
+                        esac
+        totalWorkHrs=$(( $totalWorkHrs + $empHrs ))
+        ((totalWorkHrs++))
+done
+echo "Total Work Hours"  $totalWorkHrs
+}
 attendance
 dailyWage
 checkPartTime
 usingCase
 wageForMonths
 findHrs
+getWorkingHrs
