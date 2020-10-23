@@ -32,5 +32,23 @@ function dailyWage()
                 echo "Salary = 0"
         fi
 }
+
+function checkPartTime()
+{
+        if [[ $((RANDOM%3)) -eq $isPartTime ]]
+        then
+                echo "Employee Is Part Time"
+                empHrs=4
+        elif [[ $((RANDOM%3)) -eq $isFulltime ]]
+        then
+                echo "Employee is Full Time"
+                empHrs=8
+        else
+                empHrs=0
+        fi
+        dailySalary=$(($empHrs * $wagePerHr))
+        echo "Salary is.."$dailySalary
+}
 attendance
 dailyWage
+checkPartTime
