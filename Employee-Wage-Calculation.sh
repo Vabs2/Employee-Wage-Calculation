@@ -16,9 +16,9 @@ function attendance()
 {
         if [[ $((RANDOM%2)) -eq $isPresent ]]
         then
-                echo "Employee is Present"
+                echo "Employee is Present "
         else
-                echo "Employee Is Absent"
+                echo "Employee Is Absent "
         fi
 }
 
@@ -125,6 +125,30 @@ do
 done
 echo "Total Work Hours"  $totalWorkHrs
 }
+
+function wageForMonth()
+{
+        while [[ $totalWorkHrs -lt 100 && $noOfDays -lt $noOfWorkingDays  ]]
+        do
+      empHrs=$((RANDOM%3))
+      case $empHrs in
+         1)
+         empHrs=4 ;;
+         2)
+         empHrs=8 ;;
+         *)
+         empHrs=0 ;;
+       esac
+        ((noOfDays++))
+        totalWorkHrs=$(($totalWorkHrs + $empHrs ))
+      dailyWage[$noOfDays]=$(( $empHrs * $wagePerHr))
+ done
+totalSalary=$(($totalWorkHrs * $wagePerHr))
+echo "Day Numbers is : "${!dailyWage[@]}
+echo "Daily Wage is : "${dailyWage[@]}
+echo "Total Wage of Month is : "$totalSalary
+}
+wageForMonth
 attendance
 dailyWage
 checkPartTime
