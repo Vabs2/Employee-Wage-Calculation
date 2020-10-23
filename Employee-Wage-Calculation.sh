@@ -49,6 +49,22 @@ function checkPartTime()
         dailySalary=$(($empHrs * $wagePerHr))
         echo "Salary is.."$dailySalary
 }
+
+function usingCase()
+{
+        random=$((RANDOM%3))
+        case $random in
+                1)
+                dailySalary=$(($partTimeHrs * $wagePerHr ))
+                echo "Salary is.."$dailySalary;;
+                2)
+                dailySalary=$(($fullTimeHrs * $wagePerHr ))
+                echo "Salary is.."$dailySalary;;
+                *)
+                echo "Salary is.. 0";;
+esac
+}
 attendance
 dailyWage
 checkPartTime
+usingCase
