@@ -64,7 +64,28 @@ function usingCase()
                 echo "Salary is.. 0";;
 esac
 }
+
+function wageForMonths()
+{
+        for (( i=1; i<=$noOfWorkingDays; i++ ))
+        do
+                random=$((RANDOM%3))
+                case $random in
+                        1)
+                        empHrs=4;;
+                        2)
+                        empHrs=8;;
+                        *)
+                        empHrs=0;;
+                        esac
+                salary=$(($wagePerHr*$empHrs))
+               # echo $salary
+                totalSalary=$(($totalSalary + $salary ))
+done
+echo "Total Wage of Month is : "$totalSalary
+}
 attendance
 dailyWage
 checkPartTime
 usingCase
+wageForMonths
